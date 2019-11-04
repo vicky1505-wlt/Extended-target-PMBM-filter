@@ -16,8 +16,14 @@ sets = cell(1,N);
 for i = 1:N
     sets{i} = 1:length(Wg{i});
 end
-c = allcombs(sets{:});
-[N,M] = size(c);
+
+if ~isempty(sets)
+    c = allcombs(sets{:});
+    [N,M] = size(c);
+else
+    N = 0;
+    M = 0;
+end
 
 ggiw_mbm_upd = cell(N,1);
 Wupd = zeros(N,1);
