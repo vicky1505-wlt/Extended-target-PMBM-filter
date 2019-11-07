@@ -40,7 +40,7 @@ for i = 1:np
             % for measurement cell with single measurement, also considers
             % the likelihood of clutter
             rc(i) = Lc(i)/(Lc(i)+lambda_fa);
-            log_Lu(:,i) = log_Lu(:,i) + log(lambda_fa);
+            log_Lu(:,i) = log(exp(log_Lu(:,i))+lambda_fa);
         end
         Lc(i) = ggiw_ppp.wu'*exp(log_Lu(:,i));
         ggiw_new{i}.wu = ggiw_ppp.wu.*exp(log_Lu(:,i))/Lc(i);
